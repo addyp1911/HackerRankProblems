@@ -34,11 +34,34 @@ class SinglyLinkedList:
             else:
                 return False
 
+    def deleteNode(self, head, position):
+        prev = None
+        temp = head
+        count = 1
+        while temp:
+            if count == position :
+                if position == 1:
+                    head = head.next
+                    break
+                else:
+                    prev.next = temp.next
+            count +=1    
+            prev = temp
+            temp= temp.next
+        return head            
+
 if __name__== "__main__":
     ll = SinglyLinkedList()
-    ll.insert(10)
+    ll.insert(6)
+    ll.insert(2)
     ll.insert(19)
-    ll.insert(23)
+    ll.insert(7)
+    ll.insert(4)
+    ll.insert(15)
+    ll.insert(9)
     ll.print_ll(ll.head)
-    x = ll.has_cycle(ll.head)    
+    x = ll.has_cycle(ll.head)
     print(x)            
+    x = ll.deleteNode(ll.head, 3) 
+    ll.print_ll(x)
+  
